@@ -42,6 +42,7 @@
         }
     ];
 
+
     // User login
     $.mockjax(function (requestSettings) {
         if (requestSettings.url === "https://mock.api.com/user/kid_rk/login") {
@@ -130,7 +131,6 @@
         }
     });
 
-
     // Create advert
     $.mockjax(function (requestSettings) {
         if (requestSettings.url === "https://mock.api.com/appdata/kid_rk/adverts" &&
@@ -151,6 +151,7 @@
                                 creator: creator
                             },
                             title: data.title,
+                            description: data.description,
                             publisher: data.publisher,
                             datePublished: data.datePublished,
                             price: data.price
@@ -217,9 +218,11 @@
                         if (advert.length > 0) {
                             advert = advert[0];
                             advert.title = data.title;
+                            advert.description = data.description;
                             advert.publisher = data.publisher;
                             advert.datePublished = data.datePublished;
                             advert.price = data.price;
+							advert.image = data.image;
                             this.responseText = advert;
                         }
                         this.responseText = {};
